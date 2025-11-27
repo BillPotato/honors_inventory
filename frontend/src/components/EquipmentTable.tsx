@@ -6,6 +6,7 @@ interface Props {
 
 const EquipmentTable = (props: Props) => {
   const { equipments } = props
+  // console.log("equipments:", equipments)
   
   return (
   <table>
