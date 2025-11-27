@@ -14,7 +14,10 @@ Location.init({
         allowNull: false
     },
     building_type: {
-        type: DataTypes.TEXT,
+        type: DataTypes.ENUM(
+            "Classroom", "Office", "Warehouse", "Lab", "Library",
+            "DiningHall", "Others"
+        ),
         allowNull: false
     }
 }, {

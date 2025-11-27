@@ -17,7 +17,11 @@ Equipment.init({
         allowNull: false,
     },
     equipment_type: {
-        type: DataTypes.TEXT,
+        type: DataTypes.ENUM(
+            "monitor", "mouse", "keyboard", "printer", "laptop", "projector",
+            "table", "chair", "camera", "microscrope", "gpu", "server",
+            "speaker", "others"
+        ),
         allowNull: false,
     }
 }, {
