@@ -29,7 +29,7 @@ app.use(morgan(":method :url :status :res[content-length] - :response-time ms :b
 // TODO: put into routers
 
 app.use("/api/equipment", equipmentRouter)
-app.use("/api/location", locationRouter)
+app.use("/api/locations", locationRouter)
 
 
 // ______________ERROR HANDLERS_________

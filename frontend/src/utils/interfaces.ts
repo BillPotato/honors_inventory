@@ -8,5 +8,6 @@ export interface EquipmentType {
 export interface LocationType {
   id: number,
   room_name: string,
-  building_type: string
+  building_type: string,
+  equipment: EquipmentType[]
 }

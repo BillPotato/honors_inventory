@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
 import EquipmentTable from "./components/EquipmentTable.tsx"
-import type { EquipmentType } from "./utils/interfaces.ts"
+import type { EquipmentType, LocationType } from "./utils/interfaces.ts"
 import equipmentServices from "./services/equipment.ts"
+import locationServices from "./services/locations.ts"
 
 function App() {
-  const [equipments, setEquipments] = useState<EquipmentType[]>([]) 
+  const [locations, setLocations] = useState<LocationType[]>([]) 
 
   // handlers
   const onDelete = (equipmentToDelete: EquipmentType) => {
@@ -12,7 +13,11 @@ function App() {
     equipmentServices
       .del(equipmentToDelete.id)
       .then(res => {
-        setEquipments(equipments.filter(eq => eq.id !== equipmentToDelete.id))
+        // setEquipments(equipments.filter(eq => eq.id !== equipmentToDelete.id))
+        const newLocations = locations.map(location => {
+          return { ...location, equipment: location.equipment.filter(eq => eq.id !== equipmentToDelete.id) }
+        })
+        setLocations(newLocations)
       })
   }
 
@@ -20,30 +25,37 @@ function App() {
     const equipmentToCreate = {
       model: model,
       equipment_type: type,
-      location_id: locationId
+      locationId: locationId
     }
     equipmentServices
       .create(equipmentToCreate)
-      .then(newEquipment => setEquipments(equipments.concat(newEquipment)))
+      .then(newEquipment => setLocations(locations.map(location => 
+        location.id == locationId ? { ...location, equipment: location.equipment.concat(newEquipment) } : location
+      )))
 
   }
 
   useEffect(()=>{
-    equipmentServices
+    locationServices
       .getAll()
-      .then(initialEquipments => {
-        console.log("initial equipments: ", initialEquipments)
-        setEquipments(initialEquipments)
+      .then(initialLocations => {
+        console.log("initial locations: ", initialLocations)
+        setLocations(initialLocations)
       })
   }, [])
 
   return (
-    <EquipmentTable
-      equipments={equipments}
-      locationId={3}
-      onDelete={onDelete}
-      onCreate={onEquipmentCreate}
-    />
+    <>
+      {locations.map(location => 
+        <EquipmentTable
+          key={location.id}
+          equipments={location.equipment}
+          locationId={location.id}
+          onDelete={onDelete}
+          onCreate={onEquipmentCreate}
+        />
+      )}
+    </>
   )
 }
 

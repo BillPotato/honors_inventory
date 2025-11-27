@@ -24,7 +24,7 @@ const EquipmentTable = (props: Props) => {
       </tr>
     </thead>
     <tbody>
-      {equipments.map(eq => 
+      {equipments.map(eq =>
         <Equipment
           key={eq.id}
           equipment={eq}

@@ -1,5 +1,5 @@
 import express from "express"
-import { Equipment } from "../models"
+import { Equipment, Location } from "../models"
 import type { Request, Response } from "express"
 
 const router = express.Router()
@@ -11,7 +11,9 @@ router.get("/", async (req: Request, res: Response) => {
 
 router.post("/", async (req: Request, res: Response) => {
     // request.body would include locationId
-    const equipment = await Equipment.create(req.body)
+    const equipment = await Equipment.create(
+        { ...req.body }
+    )
     res.status(201).json(equipment)
 })
 
