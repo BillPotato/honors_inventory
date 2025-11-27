@@ -16,6 +16,18 @@ function App() {
       })
   }
 
+  const onEquipmentCreate = (model: string, type: string, locationId: number) => {
+    const equipmentToCreate = {
+      model: model,
+      equipment_type: type,
+      location_id: locationId
+    }
+    equipmentServices
+      .create(equipmentToCreate)
+      .then(newEquipment => setEquipments(equipments.concat(newEquipment)))
+
+  }
+
   useEffect(()=>{
     equipmentServices
       .getAll()
@@ -26,9 +38,11 @@ function App() {
   }, [])
 
   return (
-    <EquipmentTable 
+    <EquipmentTable
       equipments={equipments}
+      locationId={3}
       onDelete={onDelete}
+      onCreate={onEquipmentCreate}
     />
   )
 }

@@ -1,13 +1,16 @@
 import type { EquipmentType } from "../utils/interfaces"
 import Equipment from "./Equipment"
+import EquipmentForm from "./EquipmentForm"
 
 interface Props {
   equipments: EquipmentType[],
-  onDelete: any
+  locationId: number,
+  onDelete: any,
+  onCreate: any
 }
 
 const EquipmentTable = (props: Props) => {
-  const { equipments, onDelete } = props
+  const { equipments, onDelete, onCreate, locationId } = props
   // console.log("equipments:", equipments)
 
   
@@ -28,6 +31,10 @@ const EquipmentTable = (props: Props) => {
           onDelete={onDelete}
         />
       )}
+      <EquipmentForm
+        locationId={locationId}
+        onSubmit={onCreate}
+      />      
     </tbody>
   </table>
   )

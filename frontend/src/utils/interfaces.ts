@@ -1,4 +1,3 @@
-
 export interface EquipmentType {
   id: number,
   model: string,

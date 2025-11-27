@@ -1,4 +1,3 @@
-import type { EquipmentType } from "../utils/interfaces"
 import axios from "axios"
 
 const baseUrl = `${import.meta.env.VITE_BACKEND_URL}/api/equipment`
@@ -9,13 +8,13 @@ const getAll = () => {
         .then(res => res.data)
 }
 
-const create = (newEquipment: EquipmentType) => {
+const create = (newEquipment: Object) => {
     return axios
         .post(baseUrl, newEquipment)
         .then(res => res.data)
 }
 
-const put = (id: number, newEquipment: EquipmentType) => {
+const put = (id: number, newEquipment: Object) => {
     return axios
         .put(`${baseUrl}/${id}`, newEquipment)
         .then(res => res.data)

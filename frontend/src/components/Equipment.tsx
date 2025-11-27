@@ -12,8 +12,7 @@ const Equipment = (props: Props) => {
     }
 
     return (
-        <>
-            <tr>
+        <tr>
             <td>{equipment.id}</td>            
             <td>{equipment.model}</td>            
             <td>{equipment.equipment_type}</td>            
@@ -22,8 +21,7 @@ const Equipment = (props: Props) => {
                     onClick={handleDelete}
                 >delete</button>
             </td> 
-            </tr>
-        </>
+        </tr>
     )
 }
 
