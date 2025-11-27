@@ -1,4 +1,5 @@
 import equipmentRouter from "./controllers/equipment"
+import locationRouter from "./controllers/location"
 import { Request, Response } from "express"
 import { PORT } from "./utils/config"
 import { testDb } from "./utils/db"
@@ -28,6 +29,7 @@ app.use(morgan(":method :url :status :res[content-length] - :response-time ms :b
 // TODO: put into routers
 
 app.use("/api/equipment", equipmentRouter)
+app.use("/api/location", locationRouter)
 
 
 // ______________ERROR HANDLERS_________

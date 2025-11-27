@@ -1,35 +1,34 @@
 import express from "express"
-import { Equipment } from "../models"
+import { Location } from "../models"
 import type { Request, Response } from "express"
 
 const router = express.Router()
 
 router.get("/", async (req: Request, res: Response) => {
-    const equipment = await Equipment.findAll()
+    const equipment = await Location.findAll()
     res.status(200).json(equipment)
 })
 
 router.post("/", async (req: Request, res: Response) => {
-    const equipment = await Equipment.create(req.body)
-    res.status(201).json(equipment)
+    const location = await Location.create(req.body)
+    res.status(201).json(location)
 })
 
 router.put("/:id", async (req: Request, res: Response) => {
-    const equipment = await Equipment.findByPk(req.params.id)
-    if (equipment) {
-        const updated = await equipment.update({ ...req.body })
-        await equipment.save()
+    const location = await Location.findByPk(req.params.id)
+    if (location) {
+        const updated = await location.update({ ...req.body })
+        await location.save()
         res.json(updated)
     } else {
         res.status(404).end()
     }
 })
 
-// TODO: delete
 router.delete("/:id", async (req: Request, res: Response) => {
-    const equipment = await Equipment.findByPk(req.params.id)
-    if (equipment) {
-        await equipment.destroy()
+    const location = await Location.findByPk(req.params.id)
+    if (location) {
+        await location.destroy()
     }
     res.status(204).end()
 })
