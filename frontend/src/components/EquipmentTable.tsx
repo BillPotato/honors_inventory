@@ -1,27 +1,32 @@
-import type { Equipment } from "../utils/interfaces"
+import type { EquipmentType } from "../utils/interfaces"
+import Equipment from "./Equipment"
 
 interface Props {
-  equipments: Equipment[]
+  equipments: EquipmentType[],
+  onDelete: any
 }
 
 const EquipmentTable = (props: Props) => {
-  const { equipments } = props
+  const { equipments, onDelete } = props
   // console.log("equipments:", equipments)
+
   
   return (
   <table>
     <thead>
       <tr> 
-        <th>Equipment Type</th>
-        <th>Room Number</th>
+        <th>Id</th>
+        <th>Model</th>
+        <th>Type</th>
       </tr>
     </thead>
     <tbody>
       {equipments.map(eq => 
-        <tr key={eq.room_name}>
-          <td>{eq.equipment_type}</td>            
-          <td>{eq.room_name}</td>            
-        </tr>
+        <Equipment
+          key={eq.id}
+          equipment={eq}
+          onDelete={onDelete}
+        />
       )}
     </tbody>
   </table>
