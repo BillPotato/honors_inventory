@@ -1,11 +1,15 @@
 import express from "express"
-import { Location } from "../models"
+import { Equipment, Location } from "../models"
 import type { Request, Response } from "express"
 
 const router = express.Router()
 
 router.get("/", async (req: Request, res: Response) => {
-    const equipment = await Location.findAll()
+    const equipment = await Location.findAll({
+        include: {
+            model: Equipment
+        }
+    })
     res.status(200).json(equipment)
 })
 

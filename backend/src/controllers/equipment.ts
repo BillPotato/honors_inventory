@@ -10,6 +10,7 @@ router.get("/", async (req: Request, res: Response) => {
 })
 
 router.post("/", async (req: Request, res: Response) => {
+    // request.body would include locationId
     const equipment = await Equipment.create(req.body)
     res.status(201).json(equipment)
 })
@@ -25,7 +26,7 @@ router.put("/:id", async (req: Request, res: Response) => {
     }
 })
 
-// TODO: delete
+// TODO: make delete enpoint
 router.delete("/:id", async (req: Request, res: Response) => {
     const equipment = await Equipment.findByPk(req.params.id)
     if (equipment) {
