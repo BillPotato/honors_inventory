@@ -1,16 +1,16 @@
-import type { EquipmentType } from "../utils/interfaces"
+import type { EquipmentType, LocationType } from "../utils/interfaces"
 import Equipment from "./Equipment"
 import EquipmentForm from "./EquipmentForm"
 
 interface Props {
-  equipments: EquipmentType[],
-  locationId: number,
+  location: LocationType,
   onDelete: any,
   onCreate: any
 }
 
 const EquipmentTable = (props: Props) => {
-  const { equipments, onDelete, onCreate, locationId } = props
+  const { location, onDelete, onCreate } = props
+  const equipments = location.equipment
   // console.log("equipments:", equipments)
 
   
@@ -18,23 +18,36 @@ const EquipmentTable = (props: Props) => {
   <table>
     <thead>
       <tr> 
+        <th>Location</th>
+        <th>Type</th>
         <th>Id</th>
         <th>Model</th>
         <th>Type</th>
       </tr>
     </thead>
     <tbody>
-      {equipments.map(eq =>
-        <Equipment
-          key={eq.id}
-          equipment={eq}
-          onDelete={onDelete}
+      {equipments.map((eq: EquipmentType, idx: number) => (
+        <tr key={eq.id}>
+          {idx === 0 && (
+            <>
+              <td rowSpan={equipments.length}>{location.room_name}</td>
+              <td rowSpan={equipments.length}>{location.building_type}</td>
+            </>
+          )}
+          <Equipment
+            equipment={eq}
+            onDelete={onDelete}
+          />
+        </tr>
+      ))}
+      <tr>
+        <td></td>
+        <td></td>
+        <EquipmentForm
+          locationId={location.id}
+          onSubmit={onCreate}
         />
-      )}
-      <EquipmentForm
-        locationId={locationId}
-        onSubmit={onCreate}
-      />      
+      </tr>
     </tbody>
   </table>
   )

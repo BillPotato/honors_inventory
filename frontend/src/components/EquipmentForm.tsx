@@ -18,8 +18,8 @@ const EquipmentForm = (props: Props) => {
     }
 
     return (
-        <tr>
-            <td> * </td>
+        <>
+            <td>*</td>
             <td>
                 <input
                     type="text"
@@ -39,7 +39,7 @@ const EquipmentForm = (props: Props) => {
                     onClick={handleSubmit}
                 >add</button>
             </td>
-        </tr>
+        </>
     )
 }
 

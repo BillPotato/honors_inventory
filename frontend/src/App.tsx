@@ -49,8 +49,7 @@ function App() {
       {locations.map(location => 
         <EquipmentTable
           key={location.id}
-          equipments={location.equipment}
-          locationId={location.id}
+          location={location}
           onDelete={onDelete}
           onCreate={onEquipmentCreate}
         />
