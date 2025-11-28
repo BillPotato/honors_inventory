@@ -30,8 +30,8 @@ const EquipmentTransferFormRow = ({ locations, onTransfer }: Props) => {
   }
 
   return (
-    <tr>
-      <td colSpan={3}>Transfer equipment</td>
+    <tr className="form-row">
+      <td colSpan={3}>Transfer Equipment:</td>
       <td>
         <select value={selectedEquipmentId} onChange={(e) => setSelectedEquipmentId(Number(e.target.value))}>
           {equipments.map(eq => (
@@ -47,7 +47,7 @@ const EquipmentTransferFormRow = ({ locations, onTransfer }: Props) => {
         </select>
       </td>
       <td>
-        <button type="button" onClick={handleTransfer}>Transfer</button>
+        <button type="button" className="transfer-btn" onClick={handleTransfer}>Transfer</button>
       </td>
     </tr>
   )

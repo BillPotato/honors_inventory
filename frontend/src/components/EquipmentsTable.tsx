@@ -23,10 +23,11 @@ const EquipmentsTable = (props: Props) => {
       <thead>
         <tr> 
           <th>Location</th>
-          <th>Type</th>
-          <th>Id</th>
+          <th>Building Type</th>
+          <th>Equipment ID</th>
           <th>Model</th>
-          <th>Type</th>
+          <th>Equipment Type</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>

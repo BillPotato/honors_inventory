@@ -23,11 +23,13 @@ const EquipmentRow = (props: Props) => {
       <td>{equipment.equipment_type}</td>            
       <td>
         <button
+          className="edit-btn"
           onClick={handleChooseEdit}
-        >edit</button>
+        >Edit</button>
         <button
+          className="delete-btn"
           onClick={handleDelete}
-        >delete</button>
+        >Delete</button>
       </td> 
     </>
   )

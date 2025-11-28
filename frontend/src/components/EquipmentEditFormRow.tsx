@@ -1,19 +1,22 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 interface Props {
   locationId: number,
   equipmentId: number,
+  onCancel: any,
   onEdit: any
 }
 
 const EquipmentEditFormRow = (props: Props) => {
-  const { onEdit, locationId, equipmentId } = props
+  const { onEdit, onCancel, locationId, equipmentId } = props
   const [model, setModel] = useState<string>("")
   const [type, setType] = useState<string>("")
-  const [currentEquipmentId, setCurrentEquipmentId] = useState<number>(equipmentId)
-  
-  useEffect(() => setCurrentEquipmentId(equipmentId), [equipmentId])
 
+  const handleCancel = () => {
+    onCancel()
+  }
+
+  const currentEquipmentId = equipmentId
 
   const handleSubmit = () => {
     onEdit(currentEquipmentId, model, type, locationId)
@@ -29,6 +32,7 @@ const EquipmentEditFormRow = (props: Props) => {
           type="text"
           value={model}
           onChange={(e)=>setModel(e.target.value)}
+          placeholder="Enter model name"
         />
       </td>
       <td>
@@ -36,15 +40,18 @@ const EquipmentEditFormRow = (props: Props) => {
           type="text"
           value={type}
           onChange={(e)=>setType(e.target.value)}
+          placeholder="Enter equipment type"
         />
         </td>
         <td>
           <button
+            className="edit-btn"
             onClick={handleSubmit}
-          >edit</button>
+          >Save</button>
           <button
-            onClick={()=>setCurrentEquipmentId(-1)}
-          >cancel</button>
+            className="cancel-btn"
+            onClick={handleCancel}
+          >Cancel</button>
         </td>
     </>
     )

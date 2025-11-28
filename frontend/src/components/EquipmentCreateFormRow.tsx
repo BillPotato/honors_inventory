@@ -17,13 +17,14 @@ const EquipmentCreateRowForm = (props: Props) => {
   }
 
   return (
-    <tr>
-      <td colSpan={3}>Add equipment:</td>
+    <tr className="form-row">
+      <td colSpan={3}>Add New Equipment:</td>
       <td>
         <input
           type="text"
           value={model}
           onChange={(e)=>setModel(e.target.value)}
+          placeholder="Enter model name"
         />
       </td>
       <td>
@@ -31,12 +32,14 @@ const EquipmentCreateRowForm = (props: Props) => {
           type="text"
           value={type}
           onChange={(e)=>setType(e.target.value)}
+          placeholder="Enter equipment type"
         />
       </td>
       <td>
         <button
+          className="add-btn"
           onClick={handleCreate}
-        >add</button>
+        >Add</button>
       </td>
     </tr>
   )

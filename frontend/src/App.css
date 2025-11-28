@@ -1,0 +1,369 @@
+/* University of South Florida Brand Colors */
+:root {
+  --usf-green: #0C4B33;
+  --usf-green-dark: #0A3D28;
+  --usf-green-light: #0F5A3F;
+  --usf-gold: #FDBB30;
+  --usf-gold-dark: #E5A520;
+  --usf-white: #FFFFFF;
+  --usf-gray-light: #F5F5F5;
+  --usf-gray: #E0E0E0;
+  --usf-gray-dark: #666666;
+  --usf-text: #333333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, var(--usf-gray-light) 0%, #E8E8E8 100%);
+  min-height: 100vh;
+  color: var(--usf-text);
+}
+
+.app-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0;
+  background: var(--usf-white);
+  min-height: 100vh;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* USF Header */
+.usf-header {
+  background: linear-gradient(135deg, var(--usf-green) 0%, var(--usf-green-dark) 100%);
+  color: var(--usf-white);
+  padding: 2rem 3rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.usf-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: var(--usf-gold);
+  opacity: 0.1;
+  border-radius: 50%;
+  transform: translate(30%, -30%);
+}
+
+.usf-header-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.usf-logo-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.usf-bull-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--usf-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 2rem;
+  color: var(--usf-green);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.usf-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.usf-title-main {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.usf-title-subtitle {
+  font-size: 1rem;
+  opacity: 0.9;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.usf-tagline {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  font-style: italic;
+  text-align: right;
+}
+
+/* Main Content */
+.main-content {
+  padding: 3rem;
+}
+
+.content-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid var(--usf-gold);
+}
+
+.content-header h1 {
+  color: var(--usf-green);
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.content-header p {
+  color: var(--usf-gray-dark);
+  font-size: 1rem;
+}
+
+/* Table Styling */
+.equipment-table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: var(--usf-white);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--usf-white);
+  font-size: 0.95rem;
+}
+
+thead {
+  background: linear-gradient(135deg, var(--usf-green) 0%, var(--usf-green-light) 100%);
+  color: var(--usf-white);
+}
+
+thead th {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+thead th:last-child {
+  border-right: none;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--usf-gray);
+  transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: var(--usf-gray-light);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody td {
+  padding: 1rem 1.25rem;
+  color: var(--usf-text);
+}
+
+/* Form Rows */
+tbody tr.form-row {
+  background-color: #FFF9E6;
+  border-left: 4px solid var(--usf-gold);
+}
+
+tbody tr.form-row td {
+  padding: 1.25rem;
+  font-weight: 500;
+  color: var(--usf-green-dark);
+}
+
+/* Input Styling */
+input[type="text"],
+select {
+  padding: 0.6rem 1rem;
+  border: 2px solid var(--usf-gray);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  background: var(--usf-white);
+  color: var(--usf-text);
+  width: 100%;
+  max-width: 300px;
+}
+
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+  border-color: var(--usf-green);
+  box-shadow: 0 0 0 3px rgba(12, 75, 51, 0.1);
+}
+
+input[type="text"]::placeholder {
+  color: var(--usf-gray-dark);
+  opacity: 0.6;
+}
+
+select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230C4B33' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.5rem;
+}
+
+/* Button Styling */
+button {
+  padding: 0.6rem 1.25rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-right: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button.edit-btn {
+  background: var(--usf-gold);
+  color: var(--usf-green-dark);
+}
+
+button.edit-btn:hover {
+  background: var(--usf-gold-dark);
+}
+
+button.delete-btn {
+  background: #DC3545;
+  color: var(--usf-white);
+}
+
+button.delete-btn:hover {
+  background: #C82333;
+}
+
+button.add-btn,
+button.transfer-btn {
+  background: var(--usf-green);
+  color: var(--usf-white);
+}
+
+button.add-btn:hover,
+button.transfer-btn:hover {
+  background: var(--usf-green-dark);
+}
+
+button.cancel-btn {
+  background: var(--usf-gray-dark);
+  color: var(--usf-white);
+}
+
+button.cancel-btn:hover {
+  background: #555555;
+}
+
+/* Empty State */
+.empty-location {
+  color: var(--usf-gray-dark);
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .usf-header {
+    padding: 1.5rem;
+  }
+
+  .usf-header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .usf-title-main {
+    font-size: 1.5rem;
+  }
+
+  .usf-tagline {
+    text-align: left;
+    width: 100%;
+  }
+
+  .main-content {
+    padding: 1.5rem;
+  }
+
+  .content-header h1 {
+    font-size: 1.5rem;
+  }
+
+  table {
+    font-size: 0.85rem;
+  }
+
+  thead th,
+  tbody td {
+    padding: 0.75rem;
+  }
+
+  input[type="text"],
+  select {
+    max-width: 100%;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .usf-header {
+    background: var(--usf-green);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  button {
+    display: none;
+  }
+
+  tbody tr:hover {
+    background-color: transparent;
+  }
+}
+

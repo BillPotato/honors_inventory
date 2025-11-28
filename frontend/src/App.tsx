@@ -3,9 +3,10 @@ import EquipmentsTable from "./components/EquipmentsTable.tsx"
 import type { EquipmentType, LocationType } from "./utils/interfaces.ts"
 import equipmentServices from "./services/equipment.ts"
 import locationServices from "./services/locations.ts"
+import "./App.css"
 
 function App() {
-  const [locations, setLocations] = useState<LocationType[]>([]) 
+  const [locations, setLocations] = useState<LocationType[]>([])
 
   // handlers
   const onEquipentDelete = (equipmentToDelete: EquipmentType) => {
@@ -84,15 +85,35 @@ function App() {
   }, [])
 
   return (
-    <>
-      <EquipmentsTable
-        locations={locations}
-        onEquipmentCreate={onEquipmentCreate}
-        onEquipmentDelete={onEquipentDelete}
-        onEquipmentEdit={onEquipmentEdit}
-        onEquipmentTransfer={onEquipmentTransfer}
-      />
-    </>
+    <div className="app-container">
+      <header className="usf-header">
+        <div className="usf-header-content">
+          <div className="usf-logo-section">
+            <img src="/public/usf_logo.png" alt="USF Logo" className="usf-logo" height={60} width={80} />
+            <div className="usf-title">
+              <div className="usf-title-main">University of South Florida</div>
+              <div className="usf-title-subtitle">Equipment Inventory System</div>
+            </div>
+          </div>
+          <div className="usf-tagline">Excellence in Action</div>
+        </div>
+      </header>
+      <main className="main-content">
+        <div className="content-header">
+          <h1>Equipment Management</h1>
+          <p>Manage and track equipment across all locations</p>
+        </div>
+        <div className="equipment-table-container">
+          <EquipmentsTable
+            locations={locations}
+            onEquipmentCreate={onEquipmentCreate}
+            onEquipmentDelete={onEquipentDelete}
+            onEquipmentEdit={onEquipmentEdit}
+            onEquipmentTransfer={onEquipmentTransfer}
+          />
+        </div>
+      </main>
+    </div>
   )
 }
 
