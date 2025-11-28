@@ -1,3 +1,4 @@
+import { useState } from "react"
 import type { LocationType } from "../utils/interfaces"
 import EquipmentCreateRowForm from "./EquipmentCreateFormRow"
 import EquipmentTableRow from "./EquipmentTableRow"
@@ -9,6 +10,7 @@ interface Props {
   onEquipmentCreate: any,
   onEquipmentEdit: any,
   onEquipmentTransfer: any,
+  onEquipmentSortToggle: any,
 }
 
 // TODO:
@@ -16,7 +18,14 @@ interface Props {
 // add location add & edit & delete
 
 const EquipmentsTable = (props: Props) => {
-  const { locations, onEquipmentDelete, onEquipmentCreate, onEquipmentEdit, onEquipmentTransfer } = props
+  const { locations, onEquipmentDelete, onEquipmentCreate, onEquipmentEdit, onEquipmentTransfer, onEquipmentSortToggle } = props
+  
+  const [sorted, setSorted] = useState<boolean>(false)
+
+  const handleSort = () => {
+    onEquipmentSortToggle()
+    setSorted(!sorted)
+  }
 
   return (
     <table>
@@ -24,8 +33,15 @@ const EquipmentsTable = (props: Props) => {
         <tr> 
           <th>Location</th>
           <th>Building Type</th>
-          <th>Equipment ID</th>
-          <th>Model</th>
+          <th>
+            
+            Equipment ID
+          </th>
+          <th>
+            <button
+              onClick={handleSort}
+            >{sorted?"Unsort":"Sort"} by</button>
+          Model</th>
           <th>Equipment Type</th>
           <th>Actions</th>
         </tr>

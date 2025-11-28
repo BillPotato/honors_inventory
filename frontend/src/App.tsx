@@ -7,6 +7,11 @@ import "./App.css"
 
 function App() {
   const [locations, setLocations] = useState<LocationType[]>([])
+  const [equipmentSorted, setEquipmentSorted] = useState<boolean>(false)
+
+  const sortedLocations = locations.map(loc => {
+    return { ...loc, equipment: [...loc.equipment].sort((e1, e2) => e1.model.localeCompare(e2.model)) }
+  })
 
   // handlers
   const onEquipentDelete = (equipmentToDelete: EquipmentType) => {
@@ -75,6 +80,12 @@ function App() {
       })
   }
 
+  const onEquipmentSortToggle = () => {
+    console.log("sort button clicked", equipmentSorted)
+    setEquipmentSorted(!equipmentSorted)
+    console.log(sortedLocations)
+  }
+
   useEffect(()=>{
     locationServices
       .getAll()
@@ -92,7 +103,7 @@ function App() {
             <img src="/public/usf_logo.png" alt="USF Logo" className="usf-logo" height={60} width={80} />
             <div className="usf-title">
               <div className="usf-title-main">University of South Florida</div>
-              <div className="usf-title-subtitle">Equipment Inventory System</div>
+              <div className="usf-title-subtitle">Equipment Inventory System (Written by human, styled with AI)</div>
             </div>
           </div>
           <div className="usf-tagline">Excellence in Action</div>
@@ -105,11 +116,12 @@ function App() {
         </div>
         <div className="equipment-table-container">
           <EquipmentsTable
-            locations={locations}
+            locations={equipmentSorted ? sortedLocations : locations}
             onEquipmentCreate={onEquipmentCreate}
             onEquipmentDelete={onEquipentDelete}
             onEquipmentEdit={onEquipmentEdit}
             onEquipmentTransfer={onEquipmentTransfer}
+            onEquipmentSortToggle={onEquipmentSortToggle}
           />
         </div>
       </main>
