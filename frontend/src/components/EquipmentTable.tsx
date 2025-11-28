@@ -15,17 +15,7 @@ const EquipmentTable = (props: Props) => {
 
   
   return (
-  <table>
-    <thead>
-      <tr> 
-        <th>Location</th>
-        <th>Type</th>
-        <th>Id</th>
-        <th>Model</th>
-        <th>Type</th>
-      </tr>
-    </thead>
-    <tbody>
+    <>
       {equipments.map((eq: EquipmentType, idx: number) => (
         <tr key={eq.id}>
           {idx === 0 && (
@@ -48,8 +38,7 @@ const EquipmentTable = (props: Props) => {
           onSubmit={onCreate}
         />
       </tr>
-    </tbody>
-  </table>
+    </>
   )
 }
 

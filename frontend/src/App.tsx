@@ -46,14 +46,28 @@ function App() {
 
   return (
     <>
-      {locations.map(location => 
-        <EquipmentTable
-          key={location.id}
-          location={location}
-          onDelete={onDelete}
-          onCreate={onEquipmentCreate}
-        />
-      )}
+      <table>
+        <thead>
+          <tr> 
+            <th>Location</th>
+            <th>Type</th>
+            <th>Id</th>
+            <th>Model</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+            {locations.map(location => 
+              <EquipmentTable
+                key={location.id}
+                location={location}
+                onDelete={onDelete}
+                onCreate={onEquipmentCreate}
+              />
+            )}
+        </tbody>
+      </table>
+      
     </>
   )
 }
