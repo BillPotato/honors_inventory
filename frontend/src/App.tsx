@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import EquipmentTable from "./components/EquipmentTable.tsx"
+import EquipmentsTable from "./components/EquipmentsTable.tsx"
 import type { EquipmentType, LocationType } from "./utils/interfaces.ts"
 import equipmentServices from "./services/equipment.ts"
 import locationServices from "./services/locations.ts"
@@ -8,11 +8,11 @@ function App() {
   const [locations, setLocations] = useState<LocationType[]>([]) 
 
   // handlers
-  const onDelete = (equipmentToDelete: EquipmentType) => {
+  const onEquipentDelete = (equipmentToDelete: EquipmentType) => {
     if (!window.confirm(`Delete ${equipmentToDelete.model} ?`)) return
     equipmentServices
       .del(equipmentToDelete.id)
-      .then(res => {
+      .then(() => {
         // setEquipments(equipments.filter(eq => eq.id !== equipmentToDelete.id))
         const newLocations = locations.map(location => {
           return { ...location, equipment: location.equipment.filter(eq => eq.id !== equipmentToDelete.id) }
@@ -32,7 +32,22 @@ function App() {
       .then(newEquipment => setLocations(locations.map(location => 
         location.id == locationId ? { ...location, equipment: location.equipment.concat(newEquipment) } : location
       )))
+  }
 
+  const onEquipmentEdit = (id: number, model: string, equipment_type: string, location_id: number) => {
+    const equipmentToUpdate = {
+        id,
+        model,
+        equipment_type,
+        locationId: location_id
+    }
+    equipmentServices
+        .put(id, equipmentToUpdate)
+        .then((updatedEquipment) => setLocations(locations.map(loc => 
+            loc.id !== location_id ? loc : { ...loc, equipment: loc.equipment.map(eq => 
+                eq.id !== id ? eq : updatedEquipment
+            )}
+        )))
   }
 
   useEffect(()=>{
@@ -46,28 +61,12 @@ function App() {
 
   return (
     <>
-      <table>
-        <thead>
-          <tr> 
-            <th>Location</th>
-            <th>Type</th>
-            <th>Id</th>
-            <th>Model</th>
-            <th>Type</th>
-          </tr>
-        </thead>
-        <tbody>
-            {locations.map(location => 
-              <EquipmentTable
-                key={location.id}
-                location={location}
-                onDelete={onDelete}
-                onCreate={onEquipmentCreate}
-              />
-            )}
-        </tbody>
-      </table>
-      
+      <EquipmentsTable
+        locations={locations}
+        onEquipmentCreate={onEquipmentCreate}
+        onEquipmentDelete={onEquipentDelete}
+        onEquipmentEdit={onEquipmentEdit}
+      />
     </>
   )
 }
