@@ -16,7 +16,7 @@ Location.init({
     building_type: {
         type: DataTypes.ENUM(
             "Classroom", "Office", "Warehouse", "Lab", "Library",
-            "DiningHall", "Others"
+            "Dorm", "DiningHall", "Others"
         ),
         allowNull: false
     }

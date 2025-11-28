@@ -1,4 +1,5 @@
 import type { LocationType } from "../utils/interfaces"
+import EquipmentCreateRowForm from "./EquipmentCreateFormRow"
 import EquipmentTableRow from "./EquipmentTableRow"
 
 interface Props {
@@ -36,6 +37,9 @@ const EquipmentsTable = (props: Props) => {
               onEquipmentEdit={onEquipmentEdit}
             />
           )}
+          <EquipmentCreateRowForm
+            onCreate={onEquipmentCreate}
+          />
       </tbody>
     </table>
   )

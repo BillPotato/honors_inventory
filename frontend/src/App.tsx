@@ -21,16 +21,16 @@ function App() {
       })
   }
 
-  const onEquipmentCreate = (model: string, type: string, locationId: number) => {
+  const onEquipmentCreate = (model: string, type: string) => {
     const equipmentToCreate = {
       model: model,
       equipment_type: type,
-      locationId: locationId
+      locationId: 1
     }
     equipmentServices
       .create(equipmentToCreate)
-      .then(newEquipment => setLocations(locations.map(location => 
-        location.id == locationId ? { ...location, equipment: location.equipment.concat(newEquipment) } : location
+      .then(newEquipment => setLocations(locations.map(loc=>
+        loc.id === 1 ? { ...loc, equipment: loc.equipment.concat(newEquipment) } : loc
       )))
   }
 

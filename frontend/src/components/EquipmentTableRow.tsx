@@ -1,6 +1,6 @@
 import type { EquipmentType, LocationType } from "../utils/interfaces"
 import EquipmentRow from "./EquipmentRow"
-import EquipmentFormRow from "./EquipmentFormRow"
+import EquipmentEditFormRow from "./EquipmentEditFormRow"
 import { useState } from "react"
 
 interface Props {
@@ -47,10 +47,9 @@ const EquipmentTableRow = (props: Props) => {
       <tr>
         <td></td>
         <td></td>
-        <EquipmentFormRow
+        <EquipmentEditFormRow
           locationId={location.id}
           equipmentId={editing}
-          onSubmit={onEquipmentCreate}
           onEdit={onEquipmentEdit}
         />
       </tr>
