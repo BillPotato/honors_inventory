@@ -22,7 +22,14 @@ const EquipmentTableRow = (props: Props) => {
 
   return (
     <>
-      {equipments.map((eq: EquipmentType, idx: number) => (
+      {equipments.length === 0 
+      ?
+        <tr>
+          <td>{location.room_name}</td>
+          <td>{location.building_type}</td>
+        </tr>
+      :
+      equipments.map((eq: EquipmentType, idx: number) => (
         <tr key={eq.id}>
           {idx === 0 && (
             <>

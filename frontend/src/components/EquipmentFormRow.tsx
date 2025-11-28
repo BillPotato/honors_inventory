@@ -50,7 +50,7 @@ const EquipmentFormRow = (props: Props) => {
           {currentEquipmentId !== -1 && 
             <button
               onClick={()=>setCurrentEquipmentId(-1)}
-            >reset</button>
+            >cancel</button>
           }
         </td>
     </>
