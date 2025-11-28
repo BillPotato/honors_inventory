@@ -18,9 +18,7 @@ const EquipmentCreateRowForm = (props: Props) => {
 
   return (
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td colSpan={3}>Add equipment:</td>
       <td>
         <input
           type="text"

@@ -50,6 +50,30 @@ function App() {
         )))
   }
 
+  // AI wrote this function
+  const onEquipmentTransfer = (equipmentId: number, toLocationId: number) => {
+    equipmentServices.put(equipmentId, { locationId: toLocationId })
+      .then((updatedEquipment) => {
+        setLocations(prev => {
+          // remove from old location and add to new location
+          const originIndex = prev.findIndex(loc => loc.equipment.some(eq => eq.id === equipmentId))
+          const originId = originIndex !== -1 ? prev[originIndex].id : undefined
+
+          return prev.map(loc => {
+            // if this is the origin, remove the equipment
+            if (loc.id === originId) {
+              return { ...loc, equipment: loc.equipment.filter(eq => eq.id !== equipmentId) }
+            }
+            // if this is the target, append the updated equipment
+            if (loc.id === updatedEquipment.location_id || loc.id === toLocationId) {
+              return { ...loc, equipment: loc.equipment.concat(updatedEquipment) }
+            }
+            return loc
+          })
+        })
+      })
+  }
+
   useEffect(()=>{
     locationServices
       .getAll()
@@ -66,6 +90,7 @@ function App() {
         onEquipmentCreate={onEquipmentCreate}
         onEquipmentDelete={onEquipentDelete}
         onEquipmentEdit={onEquipmentEdit}
+        onEquipmentTransfer={onEquipmentTransfer}
       />
     </>
   )
