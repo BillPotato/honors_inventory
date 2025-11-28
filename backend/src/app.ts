@@ -2,7 +2,7 @@ import equipmentRouter from "./controllers/equipment"
 import locationRouter from "./controllers/location"
 import { Request, Response } from "express"
 import { PORT } from "./utils/config"
-import { testDb } from "./utils/db"
+import { testDb, createWarehouse } from "./utils/db"
 import express from "express"
 import morgan from "morgan"
 import cors from "cors"
@@ -45,8 +45,9 @@ app.use(errorHandler)
 
 // _______________DRIVER_________________
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
     testDb()
+    await createWarehouse()
 	console.log(`Honors Inventory backend running on port ${PORT}`)
     console.log("_____________LOG____________")
 })
