@@ -42,7 +42,7 @@ const EquipmentTableRow = (props: Props) => {
         <td></td>
         <EquipmentFormRow
           locationId={location.id}
-          currentEquipmentId={editing}
+          equipmentId={editing}
           onSubmit={onEquipmentCreate}
           onEdit={onEquipmentEdit}
         />

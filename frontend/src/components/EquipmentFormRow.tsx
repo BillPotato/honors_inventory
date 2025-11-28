@@ -1,17 +1,20 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 interface Props {
   locationId: number,
-  currentEquipmentId: number,
+  equipmentId: number,
   onSubmit: any,
   onEdit: any
 }
 
 const EquipmentFormRow = (props: Props) => {
+  const { onSubmit, onEdit, locationId, equipmentId } = props
   const [model, setModel] = useState<string>("")
   const [type, setType] = useState<string>("")
+  const [currentEquipmentId, setCurrentEquipmentId] = useState<number>(equipmentId)
+  
+  useEffect(() => setCurrentEquipmentId(equipmentId), [equipmentId])
 
-  const { onSubmit, onEdit, locationId, currentEquipmentId } = props
 
   const handleSubmit = () => {
     if (currentEquipmentId === -1) {
@@ -44,6 +47,11 @@ const EquipmentFormRow = (props: Props) => {
           <button
             onClick={handleSubmit}
           >{currentEquipmentId === -1 ? "add" : "edit"}</button>
+          {currentEquipmentId !== -1 && 
+            <button
+              onClick={()=>setCurrentEquipmentId(-1)}
+            >reset</button>
+          }
         </td>
     </>
     )
