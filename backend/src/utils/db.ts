@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize"
 import { DATABASE_URL } from "./config"
-import { Location } from "../models"
+import { Location } from "../models/index"
 
 // connect to SQL db & check connection
 export const sequelize = new Sequelize(DATABASE_URL,
@@ -20,6 +20,6 @@ export const testDb = async () => {
 export const createWarehouse = async () => {
   const locations = await Location.findAll()
   if (locations.length === 0) {
-    Location.create({ room_name: "WA1000", building_type: "Warehouse" })
+    await Location.create({ room_name: "WA1000", building_type: "Warehouse" })
   }
 }

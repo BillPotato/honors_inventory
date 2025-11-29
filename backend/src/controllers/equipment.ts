@@ -1,5 +1,5 @@
 import express from "express"
-import { Equipment, Location } from "../models"
+import { Equipment, Location } from "../models/index"
 import type { Request, Response } from "express"
 
 const router = express.Router()
