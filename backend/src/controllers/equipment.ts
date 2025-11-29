@@ -9,6 +9,11 @@ router.get("/", async (req: Request, res: Response) => {
     res.status(200).json(equipment)
 })
 
+router.get("/types", async (req: Request, res: Response) => {
+    const types = await Equipment.getAttributes().equipment_type.values
+    res.status(200).json(types)
+})
+
 router.post("/", async (req: Request, res: Response) => {
     // request.body would include locationId
     const equipment = await Equipment.create(

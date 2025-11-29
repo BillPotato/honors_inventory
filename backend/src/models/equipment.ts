@@ -19,8 +19,8 @@ Equipment.init({
     equipment_type: {
         type: DataTypes.ENUM(
             "monitor", "mouse", "keyboard", "printer", "laptop", "projector",
-            "table", "chair", "camera", "microscrope", "gpu", "server",
-            "speaker", "others"
+            "camera", "microscrope", "gpu", "server",
+            "microphone", "speaker", "others"
         ),
         allowNull: false,
     }

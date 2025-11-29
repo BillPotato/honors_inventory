@@ -26,7 +26,7 @@ const EquipmentTableRow = (props: Props) => {
 
   return (
     <>
-      {equipments.length === 0 
+      {!equipments || !equipments.length
       ?
         <tr>
           <td className="empty-location">{location.room_name}</td>

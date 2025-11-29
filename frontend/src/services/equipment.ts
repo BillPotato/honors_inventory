@@ -8,6 +8,12 @@ const getAll = () => {
         .then(res => res.data)
 }
 
+const getTypes = () => {
+    return axios
+        .get(`${baseUrl}/types`)
+        .then(res => res.data)
+}
+
 const create = (newEquipment: Object) => {
     return axios
         .post(baseUrl, newEquipment)
@@ -28,6 +34,7 @@ const del = (id: number) => {
 
 export default {
     getAll,
+    getTypes,
     create,
     put,
     del

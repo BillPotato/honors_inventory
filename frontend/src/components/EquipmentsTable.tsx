@@ -3,6 +3,7 @@ import type { LocationType } from "../utils/interfaces"
 import EquipmentCreateRowForm from "./EquipmentCreateFormRow"
 import EquipmentTableRow from "./EquipmentTableRow"
 import EquipmentTransferFormRow from "./EquipmentTransferFormRow"
+import LocationCreateFormRow from "./LocationCreateFormRow"
 
 interface Props {
   locations: LocationType[],
@@ -11,6 +12,9 @@ interface Props {
   onEquipmentEdit: any,
   onEquipmentTransfer: any,
   onEquipmentSortToggle: any,
+  onCreateLocation: any,
+  buildingTypes: string[],
+  equipmentTypes: string[]
 }
 
 // TODO:
@@ -18,7 +22,9 @@ interface Props {
 // add location add & edit & delete
 
 const EquipmentsTable = (props: Props) => {
-  const { locations, onEquipmentDelete, onEquipmentCreate, onEquipmentEdit, onEquipmentTransfer, onEquipmentSortToggle } = props
+  const { locations, onEquipmentDelete, onEquipmentCreate, onEquipmentEdit, onEquipmentTransfer, onEquipmentSortToggle,
+    onCreateLocation, buildingTypes, equipmentTypes
+   } = props
   
   const [sorted, setSorted] = useState<boolean>(false)
 
@@ -58,10 +64,15 @@ const EquipmentsTable = (props: Props) => {
           )}
           <EquipmentCreateRowForm
             onCreate={onEquipmentCreate}
+            equipmentTypes={equipmentTypes}
           />
           <EquipmentTransferFormRow
             locations={locations}
             onTransfer={onEquipmentTransfer}
+          />
+          <LocationCreateFormRow
+            onCreate={onCreateLocation}
+            buildingTypes={buildingTypes}
           />
       </tbody>
     </table>

@@ -13,6 +13,11 @@ router.get("/", async (req: Request, res: Response) => {
     res.status(200).json(equipment)
 })
 
+router.get("/types", async (req: Request, res: Response) => {
+    const types = await Location.getAttributes().building_type.values
+    res.status(200).json(types)
+})
+
 router.post("/", async (req: Request, res: Response) => {
     const location = await Location.create(req.body)
     res.status(201).json(location)
