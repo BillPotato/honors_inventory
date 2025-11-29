@@ -60,6 +60,7 @@ const EquipmentsTable = (props: Props) => {
               onEquipmentDelete={onEquipmentDelete}
               onEquipmentCreate={onEquipmentCreate}
               onEquipmentEdit={onEquipmentEdit}
+              equipmentTypes={equipmentTypes}
             />
           )}
           <EquipmentCreateRowForm

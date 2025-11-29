@@ -1,14 +1,15 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 interface Props {
   locationId: number,
   equipmentId: number,
+  equipmentTypes: string[],
   onCancel: any,
   onEdit: any
 }
 
 const EquipmentEditFormRow = (props: Props) => {
-  const { onEdit, onCancel, locationId, equipmentId } = props
+  const { onEdit, onCancel, locationId, equipmentId, equipmentTypes } = props
   const [model, setModel] = useState<string>("")
   const [type, setType] = useState<string>("")
 
@@ -23,6 +24,12 @@ const EquipmentEditFormRow = (props: Props) => {
     setModel("")
     setType("")
   }
+
+  // fix empty initial type
+  useEffect(() => {
+    setType(equipmentTypes[0])
+  }, [equipmentTypes])
+
   if (currentEquipmentId === -1) return
   return (
     <>
@@ -36,12 +43,17 @@ const EquipmentEditFormRow = (props: Props) => {
         />
       </td>
       <td>
-        <input
+        {/* <input
           type="text"
           value={type}
           onChange={(e)=>setType(e.target.value)}
           placeholder="Enter equipment type"
-        />
+        /> */}
+        <select value={type} onChange={(e)=>setType(e.target.value)}>
+            {equipmentTypes.map(type =>
+                <option key={type}>{type}</option>
+            )}
+        </select>
         </td>
         <td>
           <button

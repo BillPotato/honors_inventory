@@ -41,7 +41,9 @@ const EquipmentCreateRowForm = (props: Props) => {
           placeholder="Enter equipment type"
         /> */}
         <select value={type} onChange={(e)=>setType(e.target.value)}>
-          {equipmentTypes.map(type => <option key={type}>{type}</option>)}
+          {equipmentTypes.map(type => 
+            <option key={type}>{type}</option>
+          )}
         </select>
       </td>
       <td>
