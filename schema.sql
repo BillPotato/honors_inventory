@@ -5,15 +5,12 @@
 DROP TYPE IF EXISTS building_type_enum CASCADE;
 DROP TYPE IF EXISTS equipment_type_enum CASCADE;
 
-INSERT INTO location (room_name, building_type) VALUES
+INSERT INTO locations (room_name, building_type) VALUES
     ('WA1000', 'Warehouse'),
     ('SCA101', 'Classroom'),
-    ('SCA102', 'Classroom'),
     ('ENB205', 'Lab'),
-    ('ENB206', 'Lab'),
     ('LIB301', 'Library'),
     ('MSC201', 'Office'),
-    ('MSC202', 'Office'),
     ('DORM101', 'Dorm'),
     ('CAF100', 'Cafeteria');
 
