@@ -10,11 +10,16 @@ A full-stack inventory management application for tracking equipment and their l
 
 ## Setup
 
-### Backend Environment Variables
+### Backend .env
 For convenience, I've provided my Postgres database link here, feel free to use it! https://docs.google.com/document/d/1ujywV-hbxelCK_mNtfrs5CWvD3pTSdw48CTNPZ7S-nE
 ```env
 DATABASE_URL=postgresql://user:password@host:port/database
 PORT=3000
+```
+
+### Frontend .env
+```env
+VITE_BACKEND_URL=http://localhost:3000
 ```
 
 ## Installation
