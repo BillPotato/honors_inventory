@@ -119,7 +119,7 @@ function App() {
       <header className="usf-header">
         <div className="usf-header-content">
           <div className="usf-logo-section">
-            <img src="/public/usf_logo.png" alt="USF Logo" className="usf-logo" height={60} width={80} />
+            <img src="/usf_logo.png" alt="USF Logo" className="usf-logo" height={60} width={80} />
             <div className="usf-title">
               <div className="usf-title-main">University of South Florida</div>
               <div className="usf-title-subtitle">Equipment Inventory System (Written by me, styled with AI)</div>
