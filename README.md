@@ -13,6 +13,7 @@ A full-stack inventory management application for tracking equipment and their l
 ### Backend .env
 For convenience, I've provided my Postgres database link here, feel free to use it! https://docs.google.com/document/d/1ujywV-hbxelCK_mNtfrs5CWvD3pTSdw48CTNPZ7S-nE
 ```env
+# Replace with your db URL
 DATABASE_URL=postgresql://user:password@host:port/database
 PORT=3000
 ```
@@ -36,42 +37,37 @@ cd frontend
 npm install
 ```
 
+
 ## Running the Application
 
 ### Start Backend
-- Will create the tables in the database automatically
-- Will also create a default warehouse location if it doesnt exist
 
 ```bash
+cd backend
 npm install
 npm start
 ```
 
 The backend server will run on `http://localhost:<env.PORT>`, with default PORT being 3000.
 
+### Add sample data
+```bash
+cd ..
+# for linux users, I could not find a way for Windows machines
+psql "<sql_db_link>" -f schema.sql
+```
+
 ### Start Frontend
 
 ```bash
+cd frontend
 npm install
 npm run dev
 ```
 
 The frontend will run on `http://localhost:5173`.
 
-## Database Setup
 
-### Create schema
-
-The schema will be created once the backend is run, no need for manually creating it.
-
-### Add Sample Data
-
-For convenience, I've provided my Postgres database link here, feel free to use it! https://docs.google.com/document/d/1ujywV-hbxelCK_mNtfrs5CWvD3pTSdw48CTNPZ7S-nE
-
-**Important:** Make sure the backend has been started at least once before running the SQL script, as it creates the necessary ENUM types.
-```bash
-psql "<sql_db_link>" -f schema.sql
-```
 
 
 

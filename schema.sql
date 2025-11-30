@@ -1,10 +1,9 @@
--- The tables are automatically created when backend starts
--- so no need to create tables manually
--- The warehouse will also be created if there's none
+-- Honors Inventory Database Schema and Sample Data
+-- This script creates the complete database schema and populates initial sample data
+-- Run this script BEFORE starting the backend
 
-DROP TYPE IF EXISTS building_type_enum CASCADE;
-DROP TYPE IF EXISTS equipment_type_enum CASCADE;
 
+-- Insert sample locations
 INSERT INTO locations (room_name, building_type) VALUES
     ('WA1000', 'Warehouse'),
     ('SCA101', 'Classroom'),
