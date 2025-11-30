@@ -1,4 +1,4 @@
-# Honors Inventory Management System
+# Honors Inventory
 
 A full-stack inventory management application for tracking equipment and their locations.
 
@@ -48,7 +48,7 @@ npm install
 npm start
 ```
 
-The backend server will run on `http://localhost:<env.PORT>`, with default PORT being 3000.
+The backend server will run on `http://localhost:<env.PORT>`, with the default PORT being 3000.
 
 ### Add sample data
 ```bash
@@ -81,7 +81,7 @@ The frontend will run on `http://localhost:5173`.
 - `DELETE /api/equipment/:id` - Delete equipment
 
 ### Locations
-- `GET /api/locations` - Get all locations (with equipments)
+- `GET /api/locations` - Get all locations (with equipment)
 - `GET /api/locations/types` - Get all building types
 - `POST /api/locations` - Create new location
 - `PUT /api/locations/:id` - Update location
