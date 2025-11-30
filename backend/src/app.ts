@@ -1,10 +1,8 @@
 import equipmentRouter from "./controllers/equipment"
 import locationRouter from "./controllers/location"
-import "./models/location"
-import "./models/equipment"
 import { Request, Response } from "express"
 import { PORT } from "./utils/config"
-import { testDb, createWarehouse, sequelize } from "./utils/db"
+import { testDb } from "./utils/db"
 import express from "express"
 import morgan from "morgan"
 import cors from "cors"
@@ -49,8 +47,6 @@ app.use(errorHandler)
 
 app.listen(PORT, async () => {
     testDb()
-    await sequelize.sync({ alter: true })
-    await createWarehouse()
 	console.log(`Honors Inventory backend running on port ${PORT}`)
     console.log("_____________LOG____________")
 })
