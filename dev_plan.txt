@@ -1,0 +1,61 @@
+﻿Day 1
+- Learn typescript & Set up typescript config
+- Display a list of jsons as a table in frontend
+* initial json schema:
++equipment_type
++room_name
+- GET initial json from backend
+- Refactor frontend into components
+
+
+Day 2
+- Learn postgres
+- Create SQL db with initial json schema like above
+- Implement full schema
+* equipment
+* location
+- Use ENUM for “type” datatypes
+- Add more data points
+
+
+Day 3
+- Create /get helper frontend
+- Create /post helper
+- Create /put helper + update button 
+(was so complex without redux, should’ve prepared architecture for redux from the start)
+- Create /delete helper + delete button
+- Modify table structure:
+        - Location 1:
+        +Equipment1
+        +Equipment2
+        …
+* Add equipment field
+-Location 2:
+        +Equipment1
+        +Equipment2
+        …
+* Add equipment field
+* Add location field
+***(
+* Insert warehouse location on install
+* Transfer equipment between locations
+)
+* Location create field
+* Change type field into select
+
+
+Day 4
+- Decorate frontend with tailwind and make USF themed
+[implement some QoL features]
+        - sort equipment name in each location
+        - merge backend /w frontend
+        - dynamic url change
+- fix any type
+
+
+Day 5
+*finalize:
+* Attach this document to readme
+* Attach SQL script
+* Add sample data
+* Learn docker & package postgres
